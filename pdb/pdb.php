@@ -1,6 +1,10 @@
 <?php
-	$query= "P50225";
-	#filter and validate
+	$token= $_GET['text'];
+	//$reponse_url=$_GET['response_url']
+	#check token
+	//$query= 'P50225'
+	$query= $_GET['text'];
+	#filter and validate PDB or Uniprot
 	$xml="<?xml version='1.0' encoding='UTF-8'?>
 			 <orgPdbQuery>    
 		    	<queryType>org.pdb.query.simple.UpAccessionIdQuery</queryType>
