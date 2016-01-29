@@ -24,7 +24,9 @@
 	curl_setopt($ch, CURLOPT_POST,1);
 	curl_setopt($ch, CURLOPT_POSTFIELDS, $xml);
 	curl_setopt($ch, CURLINFO_CONTENT_TYPE, 'application/x-www-form-urlencoded');
+
 	$data=curl_exec($ch);
+
 	curl_close($ch);
 ?>
 <head>
