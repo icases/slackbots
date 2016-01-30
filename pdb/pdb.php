@@ -66,11 +66,11 @@ if ($_GET['team_domain']==FALSE){
 		
 </body>
 <?php } else {
-//	header("Content-type:application/json");
 	
 ?>
 
 <?php foreach($res as $id => $pdbs) { ?>
+	header("Content-type:text/plain");
 	*Structures for <?=$id?>*\n
 	<?php	foreach($pdbs as $pdb){ ?>
 	- <http://www.rcsb.org/pdb/explore/jmol.do?structureId=<?=$pdb?>|<?=$pdb?>>\n
