@@ -37,7 +37,7 @@
 	<title>PDB Structures for<?php echo $query ?></title>
 </head>
 <body>
-		<h1>Strucutures for <?php echo $query ?></h1>
+		<h1>Structures for <?php echo $query ?></h1>
 		<?php echo $data?>
 </body>
 	
