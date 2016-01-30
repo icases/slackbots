@@ -5,7 +5,7 @@
 	$token= $_GET['text'];
 	//check token
 	if($token!=$my_token){
-		http_response_code(401); #unauthorized
+		http_response_code(401); 
 	}
 	//$reponse_url=$_GET['response_url']
 	#
