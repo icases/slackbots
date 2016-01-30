@@ -41,7 +41,7 @@
 		<?php echo $data?>
 		<ul>
 		<?php
-		foreach($ids as $id){
+		foreach($ids[0] as $id){
 		?>
 		<li><a href='http://www.rcsb.org/pdb/explore/jmol.do?structureId=<?=$id?>'><?=$id?></a></li>
 		<?php	
