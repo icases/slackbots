@@ -6,6 +6,8 @@
 	//check token
 	if($token!=$my_token){
 		http_response_code(401); 
+		exit("<h1>ERROR 401:Unauthorized</h1><p>  You are not authorized to use this service<p>\n");
+		
 	}
 	//$reponse_url=$_GET['response_url']
 	#
