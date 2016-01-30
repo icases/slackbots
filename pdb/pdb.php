@@ -1,8 +1,5 @@
-
-<html>
 <?php
 	$config = parse_ini_file("pdb.ini");
-	
 	$token= $_GET['token'];
 	//check token
 	if($token!=$config['token']){
@@ -42,8 +39,9 @@
 	} else {
 		$data="$query no parece un Uniprot ID";
 	}	
+if ($_GET['team_domain']==FALSE){
 ?>
-
+<html>
 <head>
 	<title>PDB Structures for <?php echo $query ?></title>
 </head>
@@ -67,4 +65,17 @@
 		?>
 		
 </body>
+<?php } else {
+	header("Content-type:application/json");
 	
+?>
+{ 'text':'Structures for <?=$query?> \n
+<?php foreach($res as $id => $pdbs) {
+		foreach($pdbs as $pdb){ ?>
+	<http://www.rcsb.org/pdb/explore/jmol.do?structureId=<?=$pdb?>|<?=$pdb?>>\n
+  <?php }
+	}
+?>
+}	
+
+<?php }?>
