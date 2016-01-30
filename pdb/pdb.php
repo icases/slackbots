@@ -29,6 +29,8 @@
 		$data=curl_exec($ch);
 
 		curl_close($ch);
+	} else {
+		$data="$query no parece un Uniprot ID";
 	}	
 ?>
 <head>
