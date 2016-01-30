@@ -2,7 +2,7 @@
 
 <?php
 	$my_token="fLunbvOkhS3J5CLnkiGi0PZd";
-	$token= $_GET['text'];
+	$token= $_GET['token'];
 	//check token
 	if($token!=$my_token){
 		http_response_code(401); 
