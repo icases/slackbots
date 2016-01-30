@@ -1,9 +1,12 @@
-<html>
+
 
 <?php
+	$my_token="fLunbvOkhS3J5CLnkiGi0PZd";
 	$token= $_GET['text'];
 	//check token
-	
+	if($token!=$my_token){
+		http_response_code(401); #unauthorized
+	}
 	//$reponse_url=$_GET['response_url']
 	#
 	//$query= 'P50225'
@@ -33,6 +36,7 @@
 		$data="$query no parece un Uniprot ID";
 	}	
 ?>
+<html>
 <head>
 	<title>PDB Structures for <?php echo $query ?></title>
 </head>
@@ -43,7 +47,7 @@
 		<?php
 		foreach($ids[1] as $id){
 		?>
-		<li><a href='http://www.rcsb.org/pdb/explore/jmol.do?structureId=<?=$id?>'><?=$id?></a></li>
+		<li><a href='http://www.rcsb.org/pdb/explore/jmol.do?structureId=<?=$id?>' target='_blank'><?=$id?></a></li>
 		<?php	
 		}
 		?>
