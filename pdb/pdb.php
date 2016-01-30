@@ -1,10 +1,11 @@
 
 
 <?php
-	$my_token="fLunbvOkhS3J5CLnkiGi0PZd";
+	$config = parse_ini_file("pdb.ini");
+	
 	$token= $_GET['token'];
 	//check token
-	if($token!=$my_token){
+	if($token!=$config['token']){
 		http_response_code(401); 
 		exit("<h1>ERROR 401:Unauthorized</h1><p>  You are not authorized to use this service<p>\n");
 		
