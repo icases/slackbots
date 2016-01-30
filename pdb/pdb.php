@@ -11,9 +11,7 @@
 	#filter and validate PDB or Uniprot
 	
 	#uniprot RegExp
-	if(preg_match("/^[OPQ][0-9][A-Z0-9]{3}[0-9]|[A-NR-Z][0-9]([A-Z][A-Z0-9]{2}[0-9]){1,2}$/",$query)==1){
-	
-	
+	if(preg_match("/^[OPQ][0-9][A-Z0-9]{3}[0-9]|[A-NR-Z][0-9]([A-Z][A-Z0-9]{2}[0-9]){1,2}$/",$query)===1){
 		$xml="<?xml version='1.0' encoding='UTF-8'?>
 			 <orgPdbQuery>    
 		    	<queryType>org.pdb.query.simple.UpAccessionIdQuery</queryType>
