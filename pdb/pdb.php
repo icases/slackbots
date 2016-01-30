@@ -27,7 +27,7 @@
 		curl_setopt($ch, CURLINFO_CONTENT_TYPE, 'application/x-www-form-urlencoded');
 
 		$data=curl_exec($ch);
-
+		preg_match_all('/\w+:\d\s/',$data,$ids)
 		curl_close($ch);
 	} else {
 		$data="$query no parece un Uniprot ID";
@@ -39,5 +39,14 @@
 <body>
 		<h1>Structures for <?php echo $query ?></h1>
 		<?php echo $data?>
+		<ul>
+		<?php
+		foreach($ids as $id){
+		?>
+		<li><a href='http://www.rcsb.org/pdb/explore/jmol.do?structureId=<?=$id?>'><?=$id?></a></li>
+		<?php	
+		}
+		?>
+		</ul>
 </body>
 	
