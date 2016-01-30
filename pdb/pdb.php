@@ -1,5 +1,5 @@
 
-
+<html>
 <?php
 	$config = parse_ini_file("pdb.ini");
 	
@@ -15,17 +15,18 @@
 	//$query= 'P50225'
 	$query= $_GET['text'];
 	#filter and validate PDB or Uniprot
-	$res;
+	
 	#uniprot RegExp
-	if(preg_match_all("/([OPQ][0-9][A-Z0-9]{3}[0-9]|[A-NR-Z][0-9]([A-Z][A-Z0-9]{2}[0-9]){1,2})\s+/",$query,$uni_ids)===1){
-		foreach ($uni_ids as $id){	
+	if(preg_match_all("/([OPQ][0-9][A-Z0-9]{3}[0-9]|[A-NR-Z][0-9]([A-Z][A-Z0-9]{2}[0-9]){1,2})/",$query,$uni_ids)>0){
+		//print_r($uni_ids[1]);
+		foreach ($uni_ids[1] as $id){	
 			$xml="<?xml version='1.0' encoding='UTF-8'?>
 			 <orgPdbQuery>    
 		    	<queryType>org.pdb.query.simple.UpAccessionIdQuery</queryType>
 		    	<description>Simple query for a list of UniprotKB Accession IDs: $id</description>   
 		    	<accessionIdList>$id</accessionIdList>
 				</orgPdbQuery>";
-	
+			//echo $xml;
 			$ch = curl_init("http://www.rcsb.org/pdb/rest/search/");
 			curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 			curl_setopt($ch, CURLOPT_HEADER, 0);
@@ -42,19 +43,21 @@
 		$data="$query no parece un Uniprot ID";
 	}	
 ?>
-<html>
+
 <head>
 	<title>PDB Structures for <?php echo $query ?></title>
 </head>
 <body>
-		<?php foreach($res as $id => $pbds) { ?>
+		
+		<?php foreach($res as $id => $pdbs) { ?>
+			
 			<h1>Structures for <?php echo $id ?></h1>
 
 			<ul>
 			<?php
 			foreach($pdbs as $pdb){
 			?>
-			<li><a href='http://www.rcsb.org/pdb/explore/jmol.do?structureId=<?=$pdb?>' target='_blank'><?=$pbd?></a></li>
+			<li><a href='http://www.rcsb.org/pdb/explore/jmol.do?structureId=<?=$pdb?>' target='_blank'><?=$pdb?></a></li>
 			<?php	
 			}
 			?>
