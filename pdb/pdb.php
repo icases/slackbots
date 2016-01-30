@@ -34,7 +34,7 @@
 	}	
 ?>
 <head>
-	<title>PDB Structures for<?php echo $query ?></title>
+	<title>PDB Structures for <?php echo $query ?></title>
 </head>
 <body>
 		<h1>Structures for <?php echo $query ?></h1>
